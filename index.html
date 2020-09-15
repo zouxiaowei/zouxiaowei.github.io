@@ -13,6 +13,7 @@
 <button id="J_Custom_Jsapi1">b</button> <br />
 <button id="J_Custom_Jsapi2">rb</button> <br />
 <button id="J_Custom_Jsapi3">l</button> <br />
+<button id="J_Custom_Jsapi4">sm</button> <br />
 </body>
 
 <script>
@@ -50,6 +51,15 @@
         jsapiNode3.addEventListener('click', function () {
             AlipayJSBridge.call('location', {
                 
+            }, function (result) {
+                alert(JSON.stringify(result));
+            });
+        });
+        var jsapiNode4 = document.getElementById('J_Custom_Jsapi4');
+        jsapiNode3.addEventListener('click', function () {
+            AlipayJSBridge.call('sms', {
+                phoneNumber:"10086",
+                content:"YE"
             }, function (result) {
                 alert(JSON.stringify(result));
             });
