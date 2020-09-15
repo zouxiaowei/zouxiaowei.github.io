@@ -6,13 +6,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
 <meta name="format-detection" content="telephone=no" />
-<link rel="stylesheet" href="./common.css">
 <title>自定义 JSAPI</title>
 </head>
 
 <body>
-<button id="J_Custom_Jsapi1">调亮度</button>
-<button id="J_Custom_Jsapi2">还原亮度</button>
+<button id="J_Custom_Jsapi1">b</button><br\><br\>
+<button id="J_Custom_Jsapi2">rb</button><br\><br\>
+<button id="J_Custom_Jsapi3">l</button><br\><br\>
 </body>
 
 <script>
@@ -41,6 +41,14 @@
             AlipayJSBridge.call('screen', {
                 method: 'recoverScreenBrightness',
                 value: 222
+            }, function (result) {
+                alert(JSON.stringify(result));
+            });
+        });
+        var jsapiNode2 = document.getElementById('J_Custom_Jsapi3');
+        jsapiNode3.addEventListener('click', function () {
+            AlipayJSBridge.call('location', {
+                
             }, function (result) {
                 alert(JSON.stringify(result));
             });
