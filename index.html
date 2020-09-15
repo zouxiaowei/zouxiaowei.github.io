@@ -28,9 +28,9 @@ function ready(callback) {
     ready(function () {
         var jsapiNode = document.getElementById('J_Custom_Jsapi');
         jsapiNode.addEventListener('click', function () {
-            AlipayJSBridge.call('myapi', {
-                param1: 'JsParam1',
-                param2: 'JsParam2'
+            AlipayJSBridge.call('screen', {
+                method: 'changeScreenBrightness',
+                value: 0.9
             }, function (result) {
                 alert(JSON.stringify(result));
         });
