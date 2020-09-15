@@ -11,7 +11,8 @@
 </head>
 
 <body>
-<button id="J_Custom_Jsapi">自定义 JSAPI</button>
+<button id="J_Custom_Jsapi1">调亮度</button>
+<button id="J_Custom_Jsapi2">还原亮度</button>
 </body>
 
 <script>
@@ -26,11 +27,19 @@ function ready(callback) {
     }
 
     ready(function () {
-        var jsapiNode = document.getElementById('J_Custom_Jsapi');
+        var jsapiNode = document.getElementById('J_Custom_Jsapi1');
         jsapiNode.addEventListener('click', function () {
             AlipayJSBridge.call('screen', {
                 method: 'changeScreenBrightness',
                 value: 0.9
+            }, function (result) {
+                alert(JSON.stringify(result));
+        });
+        var jsapiNode2 = document.getElementById('J_Custom_Jsapi2');
+        jsapiNode2.addEventListener('click', function () {
+            AlipayJSBridge.call('screen', {
+                method: 'recoverScreenBrightness',
+                value: 222
             }, function (result) {
                 alert(JSON.stringify(result));
         });
