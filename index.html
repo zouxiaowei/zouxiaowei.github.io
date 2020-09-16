@@ -52,9 +52,13 @@
         var jsapiNode3 = document.getElementById('J_Custom_Jsapi3');
         jsapiNode3.addEventListener('click', function () {
             AlipayJSBridge.call('location', {
-                
-            }, function (result) {
-                alert(JSON.stringify(result));
+                source:'0'
+            },function(result) {
+                console.log(result.longitude);
+                console.log(result.latitude);
+                console.log(result.cityCode);
+                console.log(result.province);
+                console.log(result.city);
             });
         });
         var jsapiNode4 = document.getElementById('J_Custom_Jsapi4');
