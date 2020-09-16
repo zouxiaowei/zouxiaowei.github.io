@@ -10,11 +10,12 @@
 </head>
 
 <body>
-<button id="J_Custom_Jsapi1">b</button> <br />
-<button id="J_Custom_Jsapi2">rb</button> <br />
-<button id="J_Custom_Jsapi3">l</button> <br />
-<button id="J_Custom_Jsapi4">sm</button> <br />
+<button id="J_Custom_Jsapi1">brightness</button> <br />
+<button id="J_Custom_Jsapi2">recoverbrightness</button> <br />
+<button id="J_Custom_Jsapi3">location</button> <br />
+<button id="J_Custom_Jsapi4">sms</button> <br />
 <button id="J_Custom_Jsapi5">browser</button> <br />
+<button id="J_Custom_Jsapi6">exitapp</button> <br />
 </body>
 
 <script>
@@ -65,11 +66,16 @@
                 alert(JSON.stringify(result));
             });
         });
-        
+
         var jsapiNode5 = document.getElementById('J_Custom_Jsapi5');
         jsapiNode5.addEventListener('click', function () {
             AlipayJSBridge.call('browser', {
                 url:"https://www.baidu.com",
+            });
+        });
+        var jsapiNode6 = document.getElementById('J_Custom_Jsapi6');
+        jsapiNode6.addEventListener('click', function () {
+            AlipayJSBridge.call('exitApp', {
             });
         });
 
