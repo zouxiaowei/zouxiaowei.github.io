@@ -85,7 +85,7 @@
         var jsapiNode7 = document.getElementById('J_Custom_Jsapi7');
         jsapiNode7.addEventListener('click', function () {
             AlipayJSBridge.call('canOpenApp', {
-              url:"Photos://"
+              url:"sms://"
             },function(result) {
               console.log(result.canOpen);
               alert(JSON.stringify(result));
@@ -94,7 +94,7 @@
         var jsapiNode8 = document.getElementById('J_Custom_Jsapi8');
         jsapiNode8.addEventListener('click', function () {
             AlipayJSBridge.call('openApp', {
-              url:"Photos://"
+              url:"sms://"
             },function(result) {
               console.log(result.canOpen);
               alert(JSON.stringify(result));
