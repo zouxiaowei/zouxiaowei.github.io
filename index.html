@@ -33,9 +33,8 @@
     ready(function () {
         var jsapiNode = document.getElementById('J_Custom_Jsapi1');
         jsapiNode.addEventListener('click', function () {
-            AlipayJSBridge.call('screen', {
-                method: 'changeScreenBrightness',
-                value: 0.9
+            AlipayJSBridge.call('canOpen', {
+                url: 'sdada'
             }, function (result) {
                 alert(JSON.stringify(result));
             });
