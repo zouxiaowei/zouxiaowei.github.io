@@ -16,6 +16,8 @@
 <button id="J_Custom_Jsapi4">sms</button> <br />
 <button id="J_Custom_Jsapi5">browser</button> <br />
 <button id="J_Custom_Jsapi6">exitapp</button> <br />
+<button id="J_Custom_Jsapi7">canOpenApp</button> <br />
+<button id="J_Custom_Jsapi8">openApp</button> <br />
 </body>
 
 <script>
@@ -33,41 +35,39 @@
     ready(function () {
         var jsapiNode = document.getElementById('J_Custom_Jsapi1');
         jsapiNode.addEventListener('click', function () {
-            AlipayJSBridge.call('screen', {
-                method: 'changeScreenBrightness',
-                value: 0.9
+            AlipayJSBridge.call('brightness', {
+                method:'changeScreenBrightness',value:0.5
             }, function (result) {
+                console.log(result.status);
                 alert(JSON.stringify(result));
             });
         });
         var jsapiNode2 = document.getElementById('J_Custom_Jsapi2');
         jsapiNode2.addEventListener('click', function () {
-            AlipayJSBridge.call('screen', {
-                method: 'recoverScreenBrightness',
-                value: 222
+            AlipayJSBridge.call('brightness', {
+                method:'recoverScreenBrightness'
             }, function (result) {
+                console.log(result.status);
                 alert(JSON.stringify(result));
             });
         });
         var jsapiNode3 = document.getElementById('J_Custom_Jsapi3');
         jsapiNode3.addEventListener('click', function () {
             AlipayJSBridge.call('location', {
-                source:'0'
+                source:0
             },function(result) {
                 console.log(result.longitude);
                 console.log(result.latitude);
                 console.log(result.cityCode);
                 console.log(result.province);
                 console.log(result.city);
+                alert(JSON.stringify(result));
             });
         });
         var jsapiNode4 = document.getElementById('J_Custom_Jsapi4');
         jsapiNode4.addEventListener('click', function () {
             AlipayJSBridge.call('sms', {
-                phoneNumber:"10086",
-                content:"YE"
-            }, function (result) {
-                alert(JSON.stringify(result));
+                phoneNumber:'1111',content:'test'
             });
         });
 
@@ -82,7 +82,24 @@
             AlipayJSBridge.call('exitApp', {
             });
         });
-
+        var jsapiNode7 = document.getElementById('J_Custom_Jsapi7');
+        jsapiNode7.addEventListener('click', function () {
+            AlipayJSBridge.call('canOpenApp', {
+              urlScheme:"Photos://"
+            },function(result) {
+              console.log(result.canOpen);
+              alert(JSON.stringify(result));
+            });
+        });
+        var jsapiNode8 = document.getElementById('J_Custom_Jsapi8');
+        jsapiNode8.addEventListener('click', function () {
+            AlipayJSBridge.call('openApp', {
+              urlScheme:"Photos://"
+            },function(result) {
+              console.log(result.canOpen);
+              alert(JSON.stringify(result));
+            });
+        });
     });
 </script>
 
