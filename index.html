@@ -35,8 +35,8 @@
     ready(function () {
         var jsapiNode = document.getElementById('J_Custom_Jsapi1');
         jsapiNode.addEventListener('click', function () {
-            AlipayJSBridge.call('brightness', {
-                method:'changeScreenBrightness',value:0.5
+            AlipayJSBridge.call('changeScreenBrightness', {
+                value:0.5
             }, function (result) {
                 console.log(result.status);
                 alert(JSON.stringify(result));
@@ -44,9 +44,7 @@
         });
         var jsapiNode2 = document.getElementById('J_Custom_Jsapi2');
         jsapiNode2.addEventListener('click', function () {
-            AlipayJSBridge.call('brightness', {
-                method:'recoverScreenBrightness'
-            }, function (result) {
+            AlipayJSBridge.call('recoverScreenBrightness',function (result) {
                 console.log(result.status);
                 alert(JSON.stringify(result));
             });
