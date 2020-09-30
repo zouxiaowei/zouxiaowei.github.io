@@ -52,7 +52,7 @@
         var jsapiNode3 = document.getElementById('J_Custom_Jsapi3');
         jsapiNode3.addEventListener('click', function () {
             AlipayJSBridge.call('location', {
-                source:1
+                source:0
             },function(result) {
                 console.log(result.longitude);
                 console.log(result.latitude);
