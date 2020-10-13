@@ -18,6 +18,7 @@
 <button id="J_Custom_Jsapi6">exitapp</button> <br />
 <button id="J_Custom_Jsapi7">canOpenApp</button> <br />
 <button id="J_Custom_Jsapi8">openApp</button> <br />
+<button id="J_Custom_Jsapi9">encript</button> <br />
 </body>
 
 <script>
@@ -96,6 +97,15 @@
             },function(result) {
               console.log(result.canOpen);
               alert(JSON.stringify(result));
+            });
+        });
+        var jsapiNode9 = document.getElementById('J_Custom_Jsapi9');
+        jsapiNode9.addEventListener('click', function () {
+            AlipayJSBridge.call('AESencrypt', {
+                content:"xxxxxx",key:'xxxxxx'
+            },function(result) {
+                console.log(result.encryptedContent);
+                alert(JSON.stringify(result));
             });
         });
     });
