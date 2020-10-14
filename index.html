@@ -12,13 +12,14 @@
 <body>
 <button id="J_Custom_Jsapi1">brightness</button> <br />
 <button id="J_Custom_Jsapi2">recoverbrightness</button> <br />
-<button id="J_Custom_Jsapi3">location</button> <br />
+<button id="J_Custom_Jsapi3">location_baidu</button> <br />
 <button id="J_Custom_Jsapi4">sms</button> <br />
 <button id="J_Custom_Jsapi5">browser</button> <br />
 <button id="J_Custom_Jsapi6">exitapp</button> <br />
 <button id="J_Custom_Jsapi7">canOpenApp</button> <br />
 <button id="J_Custom_Jsapi8">openApp</button> <br />
 <button id="J_Custom_Jsapi9">encript</button> <br />
+<button id="J_Custom_Jsapi10">location_gaode</button> <br />
 </body>
 
 <script>
@@ -105,6 +106,19 @@
                 content:"xxxxxx",key:'xxxxxx'
             },function(result) {
                 console.log(result.encryptedContent);
+                alert(JSON.stringify(result));
+            });
+        });
+        var jsapiNode10 = document.getElementById('J_Custom_Jsapi10');
+        jsapiNode10.addEventListener('click', function () {
+            AlipayJSBridge.call('location', {
+                source:1
+            },function(result) {
+                console.log(result.longitude);
+                console.log(result.latitude);
+                console.log(result.cityCode);
+                console.log(result.province);
+                console.log(result.city);
                 alert(JSON.stringify(result));
             });
         });
