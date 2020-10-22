@@ -20,6 +20,7 @@
 <button id="J_Custom_Jsapi8">openApp</button> <br />
 <button id="J_Custom_Jsapi9">encript</button> <br />
 <button id="J_Custom_Jsapi10">location_gaode</button> <br />
+<button id="J_Custom_Jsapi11">navigateByThird</button> <br />
 </body>
 
 <script>
@@ -103,7 +104,7 @@
         var jsapiNode9 = document.getElementById('J_Custom_Jsapi9');
         jsapiNode9.addEventListener('click', function () {
             AlipayJSBridge.call('AESencrypt', {
-                content:"xxxxxx",key:'xxxxxx'
+                content:"thisiscontent",key:'qwertyuuiiiwuuuwjjjjsdfebbzejjerjeewqwertyuuiiiwuuuwjjjjsdfebbzejjerjeew'
             },function(result) {
                 console.log(result.encryptedContent);
                 alert(JSON.stringify(result));
@@ -120,6 +121,12 @@
                 console.log(result.province);
                 console.log(result.city);
                 alert(JSON.stringify(result));
+            });
+        });
+        var jsapiNode11 = document.getElementById('J_Custom_Jsapi11');
+        jsapiNode11.addEventListener('click', function () {
+            AlipayJSBridge.call('navigateByThird', {
+                longitude: 43.121,latitude:103.123131
             });
         });
     });
