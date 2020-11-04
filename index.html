@@ -21,6 +21,7 @@
 <button id="J_Custom_Jsapi9">encript</button> <br />
 <button id="J_Custom_Jsapi10">location_gaode</button> <br />
 <button id="J_Custom_Jsapi11">navigateByThird</button> <br />
+<button id="J_Custom_Jsapi12">pickPicture</button> <br />
 </body>
 
 <script>
@@ -127,6 +128,14 @@
         jsapiNode11.addEventListener('click', function () {
             AlipayJSBridge.call('navigateByThird', {
                 longitude: 116.5021847626953,latitude:39.91178704506131
+            });
+        });
+
+        var jsapiNode12 = document.getElementById('J_Custom_Jsapi12');
+        jsapiNode12.addEventListener('click', function () {
+            AlipayJSBridge.call('abcPickPicture', function(result) {
+                console.log(result.image64);
+                alert(JSON.stringify(result));
             });
         });
     });
