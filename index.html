@@ -70,6 +70,9 @@
         jsapiNode4.addEventListener('click', function () {
             AlipayJSBridge.call('sms', {
                 phoneNumber:'1111',content:'test'
+            },function(result) {
+                console.log(result.returnApp);
+                alert(JSON.stringify(result));
             });
         });
 
