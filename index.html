@@ -22,6 +22,9 @@
 <button id="J_Custom_Jsapi10">location_gaode</button> <br />
 <button id="J_Custom_Jsapi11">navigateByThird</button> <br />
 <button id="J_Custom_Jsapi12">pickPicture</button> <br />
+<button id="J_Custom_Jsapi13">pasteFromClipboard</button> <br />
+<button id="J_Custom_Jsapi14">copy2clipboard</button> <br />
+<button id="J_Custom_Jsapi15">clearClipboard</button> <br />
 </body>
 
 <script>
@@ -140,6 +143,27 @@
                 console.log(result.image64);
                 alert(JSON.stringify(result));
             });
+        });
+
+        var jsapiNode13 = document.getElementById('J_Custom_Jsapi13');
+        jsapiNode13.addEventListener('click', function () {
+            AlipayJSBridge.call('pasteFromClipboard'
+                , function (result) {
+                console.log(result.content);
+                alert(JSON.stringify(result));
+            });
+        });
+
+        var jsapiNode14 = document.getElementById('J_Custom_Jsapi14');
+        jsapiNode14.addEventListener('click', function () {
+            AlipayJSBridge.call('copy2clipboard', {
+                copiedString:'xxxxx'
+            });
+        });
+
+        var jsapiNode15 = document.getElementById('J_Custom_Jsapi15');
+        jsapiNode15.addEventListener('click', function () {
+            AlipayJSBridge.call('clearClipboard')
         });
     });
 </script>
