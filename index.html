@@ -139,9 +139,7 @@ ready(function() {
 
     var jsapiNode12 = document.getElementById('J_Custom_Jsapi12');
     jsapiNode12.addEventListener('click', function() {
-        AlipayJSBridge.call('abcPickPicture',{
-        	mode:"2"
-        }, function(result) {
+        AlipayJSBridge.call('abcPickPicture', function(result) {
             console.log(result.image64);
             alert(JSON.stringify(result));
         });
