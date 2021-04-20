@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <button id="J_Custom_Jsapi1">brightness</button> <br />
+    <button id="J_Custom_Jsapi1">hide</button> <br />
     <button id="J_Custom_Jsapi2">recoverbrightness</button> <br />
     <button id="J_Custom_Jsapi3">location_baidu</button> <br />
     <button id="J_Custom_Jsapi4">sms</button> <br />
@@ -40,8 +40,8 @@ function ready(callback) {
 ready(function() {
     var jsapiNode = document.getElementById('J_Custom_Jsapi1');
     jsapiNode.addEventListener('click', function() {
-        AlipayJSBridge.call('changeScreenBrightness', {
-            value: 0.5
+        AlipayJSBridge.call('titlebar', {
+            method: 'hideTitleBar'
         }, function(result) {
             console.log(result.status);
             alert(JSON.stringify(result));
