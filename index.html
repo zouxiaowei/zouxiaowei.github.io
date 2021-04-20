@@ -40,12 +40,7 @@ function ready(callback) {
 ready(function() {
     var jsapiNode = document.getElementById('J_Custom_Jsapi1');
     jsapiNode.addEventListener('click', function() {
-        AlipayJSBridge.call('hideTitleBar', {
-            method: 'hideTitleBar'
-        }, function(result) {
-            console.log(result.status);
-            alert(JSON.stringify(result));
-        });
+        AlipayJSBridge.call('hideTitlebar', {}, function(data) {alert('调用结果'+JSON.stringify(data));});
     });
     var jsapiNode2 = document.getElementById('J_Custom_Jsapi2');
     jsapiNode2.addEventListener('click', function() {
