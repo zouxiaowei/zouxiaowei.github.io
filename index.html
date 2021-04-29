@@ -16,6 +16,14 @@
 <script src="https://mgw.test.abchina.com/13035BB131050_default/bankabc_external.js"></script>
 <script>
 
+function ready(callback){
+    if(window.AlipayJSBridge){
+        callback&&callback();
+    }else{
+        document.addEventListener('AlipayJSBridgeReady',callback,false);
+    }
+}
+
 function clearPageStack() {
     interBankBridge.clearPageStack();
 }
