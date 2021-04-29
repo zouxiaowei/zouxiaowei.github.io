@@ -14,6 +14,97 @@
     <button id="J_Custom_Jsapi3">callWebBrowser</button> <br />
 </body>
 <script>
+var interBankBridge = {
+    abcReady: function(callback) {
+        // 濡傛灉 jsbridge 宸茬粡娉ㄥ叆鍒欑洿鎺ヨ皟鐢�
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            // 濡傛灉娌℃湁娉ㄥ叆鍒欑洃鍚敞鍏ョ殑浜嬩欢
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    },
+    clearPageStack: function(success, fail, params) {
+        this.abcReady(function() {
+            AlipayJSBridge.call('abcExitWebAndBackToHome');
+        })
+    },
+    getLocationInfo: function(success, fail, params) {
+        this.abcReady(function() {
+            AlipayJSBridge.call('location', {
+                source: 0
+            }, function(result) {
+                var failMessage = {
+                    message: '瀹氫綅澶辫触锛岃妫€鏌ヨ澶囨槸鍚﹀紑鍚綅缃潈闄愭垨閲嶆柊杩涘叆椤甸潰锛�'
+                }
+                if (result.error == 3) {
+                    fail && fail(failMessage)
+                } else {
+                    try {
+                        var obj = {
+                            lng: result.longitude,
+                            lat: result.latitude,
+                            prvinceName: result.province,
+                            cityName: result.city,
+                            cityId: result.cityCode
+                        }
+                        if (obj.cityId == '131') {
+                            obj.cityId = '110000'
+                        }
+                        success && success(obj)
+                    } catch (e) {
+                        fail && fail(failMessage)
+                    }
+                }
+            });
+        })
+    },
+    callWebBrowser: function(success, fail, params) {
+        this.abcReady(function() {
+            AlipayJSBridge.call("abcGetInfo", {
+                name: 'platform'
+            }, function(result) {
+                if (result.platform == 'Android') {
+                    AlipayJSBridge.call("browser", {
+                        url: params.url
+                    }, function(result) {
+                        if (result.canOpen == 1) {
+                            success && success()
+                        } else {
+                            fail && fail();
+                        }
+                    });
+
+                } else if (result.platform == 'iOS') {
+                    AlipayJSBridge.call("openApp", {
+                        url: params.url
+                    }, function(result) {
+                        if (result.canOpen == 1) {
+                            success && success()
+                        } else {
+                            fail && fail();
+                        }
+                    });
+                }
+            });
+
+        })
+    },
+    hideTitleBar: function() {
+        AlipayJSBridge.call("abcGetInfo", {
+            name: 'platform'
+        }, function(result) {
+            if (result.platform == 'Android') {
+                AlipayJSBridge.call('titlebar', {
+                    method: 'hideTitleBar'
+                }, function(result) {});
+
+            }
+        });
+    }
+}
+interBankBridge.abcReady(interBankBridge.hideTitleBar)
+
 function ready(callback) {
     // 如果 jsbridge 已经注入则直接调用
     if (window.AlipayJSBridge) {
