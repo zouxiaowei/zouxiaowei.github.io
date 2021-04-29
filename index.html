@@ -13,7 +13,7 @@
     <button id="J_Custom_Jsapi2">getLocationInfo</button> <br />
     <button id="J_Custom_Jsapi3">callWebBrowser</button> <br />
 </body>
-<script src="https://mgw.test.abchina.com/13035BB131050_default/bankabc_external.js"></script>>
+<script src="https://mgw.test.abchina.com/13035BB131050_default/bankabc_external.js"></script>
 <script>
 
 function clearPageStack() {
@@ -31,7 +31,7 @@ function getLocationInfo() {
 function callWebBrowser() {
     interBankBridge.callWebBrowser(function(r) {
         window.alert(r);
-    }, null, { url: 'itms-apps://itunes.apple.com/app/id1061880281' });
+    }, null, { url:'itms-apps://itunes.apple.com/app/id1061880281'});
 }
 
 ready(function() {
