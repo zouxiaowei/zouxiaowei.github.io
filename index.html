@@ -9,21 +9,9 @@
 </head>
 
 <body>
-    <button id="J_Custom_Jsapi1">hide</button> <br />
-    <button id="J_Custom_Jsapi2">recoverbrightness</button> <br />
-    <button id="J_Custom_Jsapi3">location_baidu</button> <br />
-    <button id="J_Custom_Jsapi4">sms</button> <br />
-    <button id="J_Custom_Jsapi5">browser</button> <br />
-    <button id="J_Custom_Jsapi6">exitapp</button> <br />
-    <button id="J_Custom_Jsapi7">canOpenApp</button> <br />
-    <button id="J_Custom_Jsapi8">openApp</button> <br />
-    <button id="J_Custom_Jsapi9">encript</button> <br />
-    <button id="J_Custom_Jsapi10">location_gaode</button> <br />
-    <button id="J_Custom_Jsapi11">navigateByThird</button> <br />
-    <button id="J_Custom_Jsapi12">pickPicture</button> <br />
-    <button id="J_Custom_Jsapi13">pasteFromClipboard</button> <br />
-    <button id="J_Custom_Jsapi14">copy2clipboard</button> <br />
-    <button id="J_Custom_Jsapi15">clearClipboard</button> <br />
+    <button id="J_Custom_Jsapi1">clearPageStack</button> <br />
+    <button id="J_Custom_Jsapi2">getLocationInfo</button> <br />
+    <button id="J_Custom_Jsapi3">callWebBrowser</button> <br />
 </body>
 <script>
 function ready(callback) {
@@ -36,151 +24,39 @@ function ready(callback) {
     }
 }
 
+function clearPageStack() {
+    interBankBridge.clearPageStack();
+}
+
+function getLocationInfo() {
+    interBankBridge.getLocationInfo(function(r) {
+        window.alert(JSON.stringify(r));
+    }, function(result) {
+        window.alert(result.message);
+    });
+}
+
+function callWebBrowser() {
+    interBankBridge.callWebBrowser(function(r) {
+        window.alert(r);
+    }, null, { url: 'https://www.baidu.com' });
+}
 
 ready(function() {
+
     var jsapiNode = document.getElementById('J_Custom_Jsapi1');
     jsapiNode.addEventListener('click', function() {
-        AlipayJSBridge.call('hideTitlebar', {}, function(data) {alert('调用结果'+JSON.stringify(data));});
+        clearPageStack();
     });
+
     var jsapiNode2 = document.getElementById('J_Custom_Jsapi2');
     jsapiNode2.addEventListener('click', function() {
-        AlipayJSBridge.call('recoverScreenBrightness', function(result) {
-            console.log(result.status);
-            alert(JSON.stringify(result));
-        });
+        getLocationInfo();
     });
+
     var jsapiNode3 = document.getElementById('J_Custom_Jsapi3');
     jsapiNode3.addEventListener('click', function() {
-        AlipayJSBridge.call('location', {
-            source: 0
-        }, function(result) {
-            console.log(result.longitude);
-            console.log(result.latitude);
-            console.log(result.cityCode);
-            console.log(result.province);
-            console.log(result.city);
-            alert(JSON.stringify(result));
-        });
-    });
-    var jsapiNode4 = document.getElementById('J_Custom_Jsapi4');
-    jsapiNode4.addEventListener('click', function() {
-        AlipayJSBridge.call('sms', {
-            phoneNumber: '1111',
-            content: 'test'
-        }, function(result) {
-            console.log(result.returnApp);
-            alert(JSON.stringify(result));
-        });
-    });
-
-    var jsapiNode5 = document.getElementById('J_Custom_Jsapi5');
-    jsapiNode5.addEventListener('click', function() {
-        AlipayJSBridge.call('browser', {
-            url: "https://www.baidu.com",
-        });
-    });
-    var jsapiNode6 = document.getElementById('J_Custom_Jsapi6');
-    jsapiNode6.addEventListener('click', function() {
-        AlipayJSBridge.call('abcExitApp', {});
-    });
-    var jsapiNode7 = document.getElementById('J_Custom_Jsapi7');
-    jsapiNode7.addEventListener('click', function() {
-        AlipayJSBridge.call('canOpenApp', {
-            url: "sms://"
-        }, function(result) {
-            console.log(result.canOpen);
-            alert(JSON.stringify(result));
-        });
-    });
-    var jsapiNode8 = document.getElementById('J_Custom_Jsapi8');
-    jsapiNode8.addEventListener('click', function() {
-        AlipayJSBridge.call('openApp', {
-            url: "sms://"
-        }, function(result) {
-            console.log(result.canOpen);
-            alert(JSON.stringify(result));
-        });
-    });
-    var jsapiNode9 = document.getElementById('J_Custom_Jsapi9');
-    jsapiNode9.addEventListener('click', function() {
-        AlipayJSBridge.call('AESencrypt', {
-            content: "13571664231|202012071025022275",
-            key: "+eBIOFA0QCobx8xocPFZa+Es6TRG83A/ZEES1kiJPXAJZjowOJ53K58w6Ak9IBOd"
-        }, function(result) {
-            console.log(result.encryptedContent);
-            alert(JSON.stringify(result));
-        });
-    });
-    var jsapiNode10 = document.getElementById('J_Custom_Jsapi10');
-    jsapiNode10.addEventListener('click', function() {
-        AlipayJSBridge.call('location', {
-            source: 1
-        }, function(result) {
-            console.log(result.longitude);
-            console.log(result.latitude);
-            console.log(result.cityCode);
-            console.log(result.province);
-            console.log(result.city);
-            alert(JSON.stringify(result));
-        });
-    });
-    var jsapiNode11 = document.getElementById('J_Custom_Jsapi11');
-    jsapiNode11.addEventListener('click', function() {
-        AlipayJSBridge.call('navigateByThird', {
-            longitude: 116.5021847626953,
-            latitude: 39.91178704506131
-        });
-    });
-
-    var jsapiNode12 = document.getElementById('J_Custom_Jsapi12');
-    jsapiNode12.addEventListener('click', function() {
-        AlipayJSBridge.call('abcPickPicture', function(result) {
-            console.log(result.image64);
-            alert(JSON.stringify(result));
-        });
-    });
-
-    var jsapiNode13 = document.getElementById('J_Custom_Jsapi13');
-    jsapiNode13.addEventListener('click', function() {
-        AlipayJSBridge.call('pasteFromClipboard', function(result) {
-            console.log(result.content);
-            alert(JSON.stringify(result));
-        });
-    });
-
-    var jsapiNode14 = document.getElementById('J_Custom_Jsapi14');
-    jsapiNode14.addEventListener('click', function() {
-        AlipayJSBridge.call('copy2clipboard', {
-            copiedString: 'xxxxx'
-        });
-    });
-
-    var jsapiNode15 = document.getElementById('J_Custom_Jsapi15');
-    jsapiNode15.addEventListener('click', function() {
-        AlipayJSBridge.call(
-            "abcDatabase", { method: "getData", key: "recent_location_json" },
-            res => {
-                let parse = JSON.parse(res.return);
-                //返回数据
-                console.log(res, parse.city, "res_res==---");
-                alert(JSON.stringify(res));
-
-                var latitudes, longitudes;
-                if (parse.latitude.length > 15) {
-                    latitudes = parse.latitude.substring(0, 15)
-                } else {
-                    latitudes = parse.latitude;
-                }
-                if (parse.longitude.length > 15) {
-                    longitudes = parse.longitude.substring(0, 15)
-                } else {
-                    longitudes = parse.longitude;
-                }
-                this.devlbs = latitudes + "/" + longitudes;
-                console.log(this.devlbs, "recent_location_json");
-                alert(JSON.stringify(this.devlbs));
-            }
-        );
+        callWebBrowser()
     });
 });
 </script>
