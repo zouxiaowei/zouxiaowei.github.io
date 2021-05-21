@@ -1,31 +1,37 @@
-<html>
-    <head>
-    </head>
-    <body>
-        <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
-        <div id="appleid-signin" data-color="black" data-border="true" data-type="sign in"></div>
-        <script type="text/javascript">
-            AppleID.auth.init({
-                clientId : '[CLIENT_ID]',
-                scope : '[SCOPES]',
-                redirectURI : '[REDIRECT_URI]',
-                state : '[STATE]',
-                nonce : '[NONCE]',
-                usePopup : true //or false defaults to false
-            });
+<!doctype html>
+<html lang="zh-cn">
 
-            //Listen for authorization success
-            document.addEventListener('AppleIDSignInOnSuccess', (data) => {
-                 //handle successful response
-                 window.alert(JSON.stringify(data))
-            });
-            //Listen for authorization failures
-            document.addEventListener('AppleIDSignInOnFailure', (error) => {
-                 //handle error.
-                 window.alert(JSON.stringify(error))
-            });
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="https://a.alipayobjects.com/g/antui/antui/10.0.18/dpl/antui.css" />
+
+  <style>
+    body {
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <button type="button" class="am-button" id="J_Save" onclick="go()">getDeviceSoftToken</button>
+
+  <script>
 
 
-        </script>
-    </body>
+
+    function go() {
+      var param = new Object();
+      param.method = "getDeviceToken";
+      AlipayJSBridge.call("abcAppleIDLogin", function (result) {
+        alert(JSON.stringify(result))
+      });
+    }
+
+
+  </script>
+
+</body>
+
 </html>
