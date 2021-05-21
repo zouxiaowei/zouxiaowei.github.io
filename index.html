@@ -9,13 +9,13 @@
 
   <style>
     body {
-      padding: 10px;
+      padding: 10px; 
     }
   </style>
 </head>
 
 <body>
-  <button type="button" class="am-button" id="J_Save" onclick="go()">getDeviceSoftToken</button>
+  <button type="button" class="am-button" id="J_Save" onclick="go()">apple id</button>
 
   <script>
 
@@ -23,7 +23,6 @@
 
     function go() {
       var param = new Object();
-      param.method = "getDeviceToken";
       AlipayJSBridge.call("abcAppleIDLogin", function (result) {
         alert(JSON.stringify(result))
       });
