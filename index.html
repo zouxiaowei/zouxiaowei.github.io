@@ -9,14 +9,15 @@
 
   <style>
     body {
-      padding: 10px; 
+      padding: 10px;
     }
   </style>
 </head>
 
 <body>
   <button type="button" class="am-button" id="J_Save" onclick="go()">apple id</button>
-
+  <button type="button" class="am-button" id="J_Save" onclick="go2()">locaitionPermission</button>
+  <button type="button" class="am-button" id="J_Save" onclick="go3()">locaition</button>
   <script>
 
 
@@ -27,6 +28,27 @@
         alert(JSON.stringify(result))
       });
     }
+    function go2() {
+      AlipayJSBridge.call('check_location_permission', function (result) {
+        console.log(result.hasLocationPermission);
+        alert(JSON.stringify(result))
+      });
+    }
+    function go3() {
+      AlipayJSBridge.call('location', {
+        source: 0
+      }, function (result) {
+        console.log(result.longitude);
+        console.log(result.latitude);
+        console.log(result.cityCode);
+        console.log(result.province);
+        console.log(result.city);
+        console.log(result.address);
+        console.log(result.adCode);
+        alert(JSON.stringify(result))
+      });
+    }
+
 
 
   </script>
