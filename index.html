@@ -29,24 +29,14 @@
       });
     }
     function go2() {
-      AlipayJSBridge.call('check_location_permission', function (result) {
-        console.log(result.hasLocationPermission);
-        alert(JSON.stringify(result))
-      });
+      AlipayJSBridge.call('abcPickPicture', {
+        mode: "0"
+      }, function (result) { console.log(result); });
     }
     function go3() {
-      AlipayJSBridge.call('location', {
-        source: 0
-      }, function (result) {
-        console.log(result.longitude);
-        console.log(result.latitude);
-        console.log(result.cityCode);
-        console.log(result.province);
-        console.log(result.city);
-        console.log(result.address);
-        console.log(result.adCode);
-        alert(JSON.stringify(result))
-      });
+      AlipayJSBridge.call('abcPickPicture', {
+        mode: "1"
+      }, function (result) { console.log(result); });
     }
 
 
