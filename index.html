@@ -25,18 +25,18 @@
     function go() {
       var param = new Object();
       AlipayJSBridge.call("abcAppleIDLogin", function (result) {
-        alert(JSON.stringify(result))
+        alert(JSON.stringify(result));
       });
     }
     function go2() {
       AlipayJSBridge.call('abcPickPicture', {
         mode: "0"
-      }, function (result) { console.log(result); });
+      }, function (result) { alert(JSON.stringify(result)); });
     }
     function go3() {
       AlipayJSBridge.call('abcPickPicture', {
         mode: "1"
-      }, function (result) { console.log(result); });
+      }, function (result) { alert(JSON.stringify(result));});
     }
 
 
