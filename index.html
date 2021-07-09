@@ -17,7 +17,7 @@
 <body>
   <button type="button" class="am-button" id="J_Save" onclick="go()">apple id</button>
   <button type="button" class="am-button" id="J_Save" onclick="go2()">locaitionPermission</button>
-  <button type="button" class="am-button" id="J_Save" onclick="go3()">locaition</button>
+  <button type="button" class="am-button" id="J_Save" onclick="go3()">request_location_permission</button>
   <script>
 
 
@@ -34,9 +34,7 @@
       }, function (result) { alert(JSON.stringify(result)); });
     }
     function go3() {
-      AlipayJSBridge.call('abcPickPicture', {
-        mode: "1"
-      }, function (result) { alert(JSON.stringify(result));});
+      AlipayJSBridge.call('request_location_permission', function (result) { alert(JSON.stringify(result));});
     }
 
 
